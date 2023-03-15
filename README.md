@@ -43,15 +43,17 @@ class Controller(ViktorController):
 
 ## 3. Creating a simple plate 
 The next step is to make a simple template in word, the word template is made with the Jinja notation. The word template in this example will have 2 different pages, on the first page the general information of the invoice will be displayed and a table with dynamic rows, with the following columns; product description, quantity, single price of the product and total price of the product. On the second page, a pie chart will be shown, which will be made in the Viktor app and a table with dynamic columns to show the percentage of the total price.
+
 Page 1:
 ![My Image](Images_readMe/Word_tags_page1.png)
+
 Page 2:
 ![My Image](Images_readMe/Word_tags_page2.png)
 
 
 
 ### 3.1 Text/Figure tags 
-The text tags and figure tags are both noted with the {{ }} delimiter, see the red boxes for the text tags and the orange box for the figure tags
+The text tags and figure tags are both noted with the {{ }} delimiter, see the red boxes for the text tags and the orange box for the figure tags. The string inside the delimiters is called the indetifier and is used to place the right values at the right tags.
 
 ### 3.2 Table with dynamic rows 
 The first table(green box) is a table with dynamic rows, this means that the number of rows depends on the input. When creating a table with dynamic rows follow the following steps:
@@ -87,16 +89,6 @@ The table on the second page is a table with dynamic columns. When creating a ta
 5. In the fourth coloumn add:
 ```
 {%tc endfor %}
-```
-
-
-
-The next step is to import the necessary packagess and to add an array called " compomentens", you can give this array any name you want. All tags are stored in this array and eventually with the render_word_file function the final word document is made.
-
-```
-from viktor.external.word import WordFileImage, WordFileTag, render_word_file
-
-components = []
 ```
 
 ## 4. Adding field in paramatrization to use
@@ -140,6 +132,12 @@ Secondly we create a function to make a matploblib pie chart with the dataframe,
 In the "download_word_file" method we add the following lines of code:
 
 ```
+The next step is to import the necessary packagess and to add an array called " compomentens", you can give this array any name you want. All tags are stored in this array and eventually with the render_word_file function the final word document is made.
+
+
+```
+
+
 def download_word_file(self, params, **kwargs):
     # Generating a panda dataframe from the price table 
     df_price = pd.DataFrame.from_dict(params.table_price) 
@@ -180,6 +178,8 @@ Inside the function:"generate_word_document", create an empty array called compo
 To give the tags in the word document values, the WordFileTag function is used. The function has two agruments, the first argument is the indentifier this used to find the location in the word template. The second argument what is the value that need to be placed at the tag location. See code below for example
 
 ```
+from viktor.external.word import WordFileImage, WordFileTag, render_word_file
+
 def generate_word_document(client_name,
                            adress,
                            zip_code,
@@ -199,7 +199,7 @@ def generate_word_document(client_name,
     components.append(WordFileTag("total_price", str(total_price))) # Convert float to string
 ```
 ### 5.2 Tables 
-The WordFileTag values can also be of type list or dicht, to make it possible to iteratie within the template. This is used for the tables, to give Table1 two rows. The data needs to be formatted as below. 
+The WordFileTag values can also be of type list or dict, to make it possible to iteratie within the template. This is used for the tables, to give Table1 two rows. The data needs to be formatted as below. 
 
 ```
 data_table2 =[
