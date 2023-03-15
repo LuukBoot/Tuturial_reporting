@@ -1,11 +1,13 @@
 # Tuturial automatic reporting 
-Welcome to this tutorial on automatic reporting in Viktor with python! As a engineer or data scientist, generating reports is an essential part of your work. Reporting not only helps you understand the insights from your data but also helps you communicate your findings/results to stakeholders.
+Welcome to this tutorial on automatic reporting in Viktor with python! As an engineer or data scientist, generating reports is an essential part of your work. Reporting not only helps you understand the insights from your data but also helps you communicate your findings/results to stakeholders.
 
-In this tutorial, we will explore how to automate the process of generating reports in Viktor with python. We will cover the basics of automatic report generation, including text, figures, dynamic tables and dynamic paragpraps.
+In this tutorial, we will explore how to automate the process of generating reports in Viktor with python. We will cover the basics of automatic report generation, including text, figures and dynamic tables.
 
 We will also learn how to use Jinja2, a templating engine for Python, a library for creating PDF documents, to generate professional-looking reports with minimal effort.
 
-By the end of this tutorial, you will have a solid understanding of how to automate the process of generating reports in Viktor with python and Jinja, which will save you time and enable you to focus on analyzing data and gaining insights. 
+By the end of this tutorial, you will have created a simple viktor application that makes an invoice with a pie chart. See gif below:
+
+
 
 ## 1. Starting structure of application
 Weet niet wat hier moet staan 
@@ -40,8 +42,7 @@ class Controller(ViktorController):
 ```
 
 ## 3. Creating a simple plate 
-The next step is to make a simple template in word, the word template is made with the Jinja notation. The word template in this example will have 2 different pages, on the first page the general information of the invoice will be displayed and a table with dynamic rows, with the following columns; product description, quantity, single price of product and total price of product. On the second page a pie chart will be shown, that will be made in the Viktor app and a table with dynamic columns to show what the percentage is of the total price.
-
+The next step is to make a simple template in word, the word template is made with the Jinja notation. The word template in this example will have 2 different pages, on the first page the general information of the invoice will be displayed and a table with dynamic rows, with the following columns; product description, quantity, single price of the product and total price of the product. On the second page, a pie chart will be shown, which will be made in the Viktor app and a table with dynamic columns to show the percentage of the total price.
 Page 1:
 ![My Image](Images_readMe/Word_tags_page1.png)
 Page 2:
