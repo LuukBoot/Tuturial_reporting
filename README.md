@@ -42,51 +42,54 @@ class Controller(ViktorController):
 ```
 
 ## 3. Creating a simple plate 
-The next step is to make a simple template in word, the word template is made with the Jinja notation. The word template in this example will have 2 different pages, on the first page the general information of the invoice will be displayed and a table with dynamic rows, with the following columns; product description, quantity, single price of the product and total price of the product. On the second page, a pie chart will be shown, which will be made in the Viktor app and a table with dynamic columns to show the percentage of the total price.
+The next step is to create a simple template in Microsoft Word. We'll use the Jinja notation to design the template. In this example, our template will have two pages. On the first page, we'll display general information about the invoice along with a table that contains dynamic rows. The table will have columns for product description, quantity, single price of the product, and total price of the product.
+
+Moving on to the second page, we'll include a pie chart that we'll create using the Viktor app. We'll also have a table with dynamic columns to display the percentage of the total price.
 
 Page 1:
+
 ![My Image](Images_readMe/Word_tags_page1.png)
 
 Page 2:
+
 ![My Image](Images_readMe/Word_tags_page2.png)
 
 
 
 ### 3.1 Text/Figure tags 
-The text tags and figure tags are both noted with the {{ }} delimiter, see the red boxes for the text tags and the orange box for the figure tags. The string inside the delimiters is called the indetifier and is used to place the right values at the right tags.
+Both text tags and figure tags are enclosed by double curly braces {{ }}. You can see the text tags highlighted in red boxes and the figure tag highlighted in orange boxes. The string inside the double curly braces is known as the identifier. It is used to place the correct values in the right tags.
 
 ### 3.2 Table with dynamic rows 
-The first table(green box) is a table with dynamic rows, this means that the number of rows depends on the input. When creating a table with dynamic rows follow the following steps:
+The first table (highlighted in green) is a table with dynamic rows, meaning that the number of rows will vary depending on the input. To create a table with dynamic rows, follow these steps:
 
-1. Create a tabel in word with column headings and the right lay-out.
-2. Add a row and merge the cells together
-3. Fill in the following line of code: 
+1. Create a table in Microsoft Word with the appropriate column headings and layout.
+2. Insert a new row, merge the cells together and the following line of code:
 ```
 {%tr for r in table1 %}
 ```
-4. Add a row and split the cells into the columns 
-5. Fill in the following line of code in each column, where var is the key name of the value.
+3. Insert a new row and split the cells into columns.
+4. In each column, add the following line of code, where var is the key name of the value:
 ```
 {{r[var]}}
 ```
-6. Add a row and merge the cells together and add the following line of code to close the for loop:
+5. Insert a new row and merge the cells together. Add the following line of code to close the for loop:
 ```
 {%tr endfor %}
 ```
 ### 3.3 Table with dynamic columns 
-The table on the second page is a table with dynamic columns. When creating a table with dynamic colums the following needs to be followed:
+The table on the second page is a table with dynamic columns. To create a table with dynamic columns, follow these steps:
 
-1. Create a tabel in word with four columns and the number of rows the tabels needs to be
-2. In the first column add the row headings
-3. In the second column add the following line of code:
+1. Create a table in Microsoft Word with four columns and the appropriate number of rows.
+2. In the first column, add the row headings.
+3. In the second column, add the following line of code:
 ```
 {%tc for c in table2 %}
 ```
-4. In the third columnd add the following line of code, where var is the key name of the value 
+4. In the third column, add the following line of code, where var is the key name of the value: 
 ```
 {{c[var]}}
 ```
-5. In the fourth coloumn add:
+5. In the fourth column, add the following line of code to close the for loop:
 ```
 {%tc endfor %}
 ```
@@ -125,14 +128,11 @@ class Parametrization(ViktorParametrization):
     download_word_file = DownloadButton('Download report', method='download_word_file')
 ```
 
-To generate the word document we will create a function called "generate_word_file", see next chapter. Firstly we import the parameters from the table in a pandas Dataframe and add two columns for the total price and the percentage of the total price. 
+To generate a Word document, we'll define a function called "generate_word_file" in the next chapter. First, we'll import the parameters from a table into a Pandas DataFrame and add two new columns for the total price and the percentage of the total price.
 
-Secondly we create a function to make a matploblib pie chart with the dataframe, this function also stores the figure in the following location: "files/figure.png"
+Next, we'll create a function to generate a pie chart using Matplotlib and the DataFrame. This function will also save the chart image to the directory "files/figure.png".
 
-In the "download_word_file" method we add the following lines of code:
-
-```
-The next step is to import the necessary packagess and to add an array called " compomentens", you can give this array any name you want. All tags are stored in this array and eventually with the render_word_file function the final word document is made.
+Finally, we'll add the following lines of code to the "download_word_file", see code below. For the code to generate the pie chart, see code at the end of the file.
 
 
 ```
