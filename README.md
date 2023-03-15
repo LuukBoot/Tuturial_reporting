@@ -6,7 +6,7 @@ In this tutorial, we will explore how to automate the process of generating repo
 We will also learn how to use Jinja2, a templating engine for Python, a library for creating PDF documents, to generate professional-looking reports with minimal effort.
 
 By the end of this tutorial, you will have created a simple viktor application that makes an invoice with a pie chart. See gif below:
-
+![My Image](Images_readMe/Animation.gif)
 
 
 ## 1. Starting structure of application
