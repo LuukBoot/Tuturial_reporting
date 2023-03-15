@@ -25,7 +25,7 @@ from viktor.parametrization import ViktorParametrization, Downloadbutton
 from viktor.result import DownloadResult
 
 class Parametrization(ViktorParametrization):
-    download_word_wile = DownloadButton('Download report', method='download_word_wile')
+    download_word_file = DownloadButton('Download report', method='download_word_wile')
     
 class Controller(ViktorController):
     viktor_enforce_field_constraints = True 
@@ -33,7 +33,7 @@ class Controller(ViktorController):
     label = 'My Entity Type'
     parametrization = Parametrization
 
-    def download_word_wile(self, params, **kwargs):
+    def download_word_file(self, params, **kwargs):
         ...
         word_file = render_word_file(...)
         return DownloadResult(word_file,"{name_file}.docx")
