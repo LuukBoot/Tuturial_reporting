@@ -42,8 +42,10 @@ class Controller(ViktorController):
 ## 3. Creating a simple plate 
 The next step is to make a simple template in word, the word template is made with the Jinja notation. The word template in this example will have 2 different pages, on the first page the general information of the invoice will be displayed and a table with dynamic rows, with the following columns; product description, quantity, single price of product and total price of product. On the second page a pie chart will be shown, that will be made in the Viktor app and a table with dynamic columns to show what the percentage is of the total price.
 
-
-![My Image](Images_readMe/Word_tags.png)
+Page 1:
+![My Image](Images_readMe/Word_tags_page1.png)
+Page 2:
+![My Image](Images_readMe/Word_tags_page2.png)
 
 
 
